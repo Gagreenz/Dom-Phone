@@ -1,0 +1,162 @@
+@import url('https://fonts.cdnfonts.com/css/microsport');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.stop-scroll
+{
+    overflow: hidden;
+}
+.title{
+    font-family: 'Microsport', sans-serif;
+}
+body{
+    background-image: url(https://kartinkin.net/pics/uploads/posts/2022-08/thumbs/1659551136_2-kartinkin-net-p-patterni-dlya-saita-besshovnie-krasivo-2.jpg);
+    background-size: 100%;
+    
+}
+.header{
+    background-color: aliceblue;
+    text-align: center;
+    height: 64px;
+}
+.header-panel{
+    display: flex;
+}
+.header-widget{
+    position: fixed;
+    top: 64px;
+    right: 0;
+    bottom: -400px;
+    left: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    padding: 0;
+    background-color: aqua;
+}
+.active{
+  visibility: visible;
+}
+.header-widget ul{
+  display: flex;
+  flex-flow: column wrap;
+  margin: 0px;
+  padding: 0px;
+}
+.header-widget ul li{
+    display: inline-block;
+    list-style: none;
+    padding: 3px;
+}
+
+@media (min-width: 992px){
+    .header-panel{
+        display: none;
+    }
+    .header-widget{
+        position:relative;
+        display:inline;
+        top:0px;
+        visibility:visible;
+    }
+    .header-widget ul{
+      display:block;
+    }
+    .widget-menu{
+      position: absolute;
+    }
+    .widget-menu ul{
+      border-radius: 15px;
+      background-color: blueviolet;
+      display: flex;
+    }
+}
+
+.widget{
+    display:block;
+
+}
+.widget ul{
+    list-style: none;
+}
+.widget ul li{
+    text-align: center;
+}
+.widget-title{
+    cursor: pointer;
+    text-align: left;
+    padding: 8px 24px;
+}
+.widget-menu ul li{
+    text-align: left;
+    padding: 5px 30px;
+    /* margin-left: 20px; */
+}
+
