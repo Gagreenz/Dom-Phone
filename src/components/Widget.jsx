@@ -19,8 +19,7 @@ function Widget({title,items}){
     return(
         <div ref={widgetRef} onMouseEnter={() => togglePopup()} className="widget" >
             <div className="widget-title">{title}</div>
-            {active && 
-            <div className="widget-menu">
+            <div className={(active ? "active" : "") + " widget-menu"}>
                 <ul>
                     <li>
                         <a><span>1Решения</span></a>
@@ -33,7 +32,6 @@ function Widget({title,items}){
                     </li>
                 </ul>
             </div>
-            }
         </div>
     )
 }

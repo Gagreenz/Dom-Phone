@@ -25,13 +25,13 @@ function NavBar(){
             <div className={'col-lg-6 header-widget ' + (isPanelActive ? "active": "")}>
                 <ul>
                     <li>
-                        <Widget title="Говно"/>
+                        <Widget title="Первый"/>
                     </li>
                     <li>
-                        <Widget title="Залупа"/>
+                        <Widget title="Второй"/>
                     </li>
                     <li>
-                        <Widget title="Пенис"/>
+                        <Widget title="Третий"/>
                     </li>
                 </ul>
             </div>
