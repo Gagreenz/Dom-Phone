@@ -3,7 +3,7 @@ import React from "react";
 import * as Yup from 'yup';
 import InputField from './Components/InputField';
 
-function LoginForm({formClass}){
+function LoginForm(){
     return(
         <>
             <Formik

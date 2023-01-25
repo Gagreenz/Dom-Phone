@@ -221,9 +221,8 @@ body{
 
 .auth-input-label{
   position: absolute;
-  margin: 10px 0;
   pointer-events: none;
-  top: 0;
+  top: 10px;
   white-space: nowrap;
   overflow: hidden;
   transition: .3s;
@@ -232,7 +231,7 @@ body{
 
 .auth-input:focus~.auth-input-label,
 .auth-input:not(:focus):not(:invalid)~.auth-input-label {
-  top: -20px;
+  top: -10px;
   font-size: 14px;
   background-color: #fff;
   padding: 0px 2px;
