@@ -2,48 +2,76 @@ import { Formik, Form} from 'formik';
 import React from "react";
 import * as Yup from 'yup';
 import InputField from './Components/InputField';
+import axios from 'axios';
 
-function LoginForm(){
+function LoginForm({setActive,setRegisterActive}){
+    const serverUrl = "https://localhost:7279/"
+
+    const LoginSchema = Yup.object({
+        login: Yup.string()
+            .required("Поле логин необходимо заполнить!"),
+        password: Yup.string()
+            .required("Поле пароль необходимо заполнить!")
+    });
+
+    const handleSubmit = (values) => {
+        axios({
+            method: "post",
+            url: serverUrl + "Account/Login",
+            data:{
+                login: values.login,
+                password: values.password
+            },
+            headers: { "Content-Type": "application/json" },
+        })  
+        .then((response) =>{
+            console.log(response);
+        })
+        .catch((response) =>{
+            console.log(response);
+        });
+        
+    }
     return(
-        <>
-            <Formik
-                initialValues={{email:"",password:""}}
-                validationSchema={ Yup.object({
-                    email: Yup.string()
-                        .max(15, 'Логин должен быть меньше 15 символов!')
-                        .required("Поле логин необходимо заполнить!"),
-                    password: Yup.string()
-                        .required("Поле пароль необходимо заполнить!")
-                })}
-                onSubmit={() => alert("!!!!")}
-            >
-                <Form className="auth-form">
-                    <div className='title'>Welcome</div>
-                    <InputField
-                        inputClass="auth-input" 
-                        errorClass="error"
-                        placeholder="Логин"
-                        type="text"
-                        name="email" 
-                    />
-                    <InputField
-                        inputClass="auth-input" 
-                        errorClass="error"
-                        type="password"
-                        name="password" 
-                        placeholder="Пароль"
-                    />
-                    <label className="auth-label">
-                        <input 
-                            type="checkbox"
-                            className='auth-checkbox'
-                        />
-                        Чужой компьютер
-                    </label>
-                    <button className="auth-btn" type="submit">LogIn</button>
-                </Form>
-            </Formik>
-        </>
+        <div className="fixed-overlay">
+          <div className="modal-window">
+            <div className="modal-container">
+                <button className='modal-btn-cls' onClick={() => setActive(false)}>X</button>
+                <div className="">
+                    <Formik
+                        initialValues={{login:"",password:""}}
+                        validationSchema={LoginSchema}
+                        onSubmit={handleSubmit}
+                        >
+                        <Form className="auth-form">
+                            <div className='title'>Welcome</div>
+                            <InputField
+                                inputClass="auth-input" 
+                                errorClass="error"
+                                placeholder="Логин"
+                                type="text"
+                                name="login" 
+                            />
+                            <InputField
+                                inputClass="auth-input" 
+                                errorClass="error"
+                                type="password"
+                                name="password" 
+                                placeholder="Пароль"
+                            />
+                            <label className="auth-label">
+                                <a onClick={setRegisterActive}>
+                                    Зарегистрироваться
+                                </a>
+                            </label>
+                            <button className="auth-btn" type="submit">LogIn</button>
+                        </Form>
+                    </Formik>
+                </div>
+              </div>
+          </div>
+        </div>
+
     )
         
         // <div className='row justify-content-center'> 
